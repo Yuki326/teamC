@@ -40,3 +40,17 @@ def createQuestionText(request):
       return redirect(to = '')
 
   return render(request,'index.html')
+
+def save_text_answers(request):
+    questions = Question_text.objects.all()
+    for i in questions:
+      if 'answer'+str(i.id) in request.GET:
+        answer = request.GET['answer'+str(i.id)]
+        question = Question_text.objects.get(id=i.id)
+        obj=Answer_text(question_id=question,content=answer)
+        obj.save()
+    # subject=Subject.objects.get(id=subject_id)
+    # #todo 開始日と締め切り日の要素を後で追加する
+    # obj = Task(subject_id=subject,name=name,author = request.user,start=start)
+    # obj.save()
+    return HttpResponse('Hellooooo')

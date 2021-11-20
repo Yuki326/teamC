@@ -14,4 +14,4 @@ class Question_text(models.Model):
 class Answer_text(models.Model):
   question_id = models.ForeignKey(Question_text,on_delete=models.CASCADE)#質問テーブルと紐づけ
   content = models.CharField(max_length=100)
-
+  #created_at
