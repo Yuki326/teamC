@@ -9,6 +9,10 @@
     {% for item in dataQ %}
     path = path + "answer{{item.id}}="
     + document.getElementById("answer"+{{item.id}}).value +"&"
+    if(document.getElementById("answer"+{{item.id}}).value==""){
+      alert("入力されていない必須項目があります");
+      return 0
+    }
     {% endfor %}
     fetch(path)
       .then(response => {
@@ -47,7 +51,7 @@
 <div class="list">
   <h3>回答リスト</h3>
   {% for item in data %}
-  <p>{{item.content}}</p>
+  <p>{{item.question_id.content}}:{{item.content}}</p>
   {% empty %}
   <h1>現在保存されている回答はありません</h1>
   {% endfor %}

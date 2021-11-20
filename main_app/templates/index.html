@@ -5,6 +5,7 @@
   <head>
     <title>test</title>
     <link href="../static/css/index.css" rel="stylesheet"/>
+    
     <script>
       function delete_question(path){
         fetch(path)
@@ -32,14 +33,24 @@
     </script>
   </head>
   <body>
-    <div class="list">
-      <h2>質問リスト</h2>
+   
+    <table class="list">
+      <tr>
+        <th>質問ID</th>
+        <th>質問内容</th>
+        <th></th>
+        <th></th>
+      </tr>
       {% for item in data %}
-      <p>{{item.id}}:{{item.content}}<a href="/delete_question_text/{{item.id}}">削除</a></p>
+        <tr>
+          <td>{{item.id}}</td>
+          <td>{{item.content}}</td>
+          <td><a href="{% url 'delete_question_text' item.id %}">削除</a></td>
+        </tr>
       {% empty %}
-      <h1>現在保存されている質問はありません</h1>
+        <h1>現在保存されている質問はありません</h1>
       {% endfor %}
-    </div>
+    </table>
     <table>
       <form action="{% url 'index' %}" method ="post">
         {% csrf_token %}
