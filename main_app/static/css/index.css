@@ -17,6 +17,9 @@ table{
   position:fixed;
   top:20vh;
 }
+.select{
+  left:30vw;
+}
 .list{
   position:fixed;
   top:40vh;

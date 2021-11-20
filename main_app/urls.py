@@ -4,4 +4,6 @@ urlpatterns = [
   path('',views.index,name='index'),
   path('answer/',views.answer,name='answer'),
   path('save_text_answers',views.save_text_answers,name='save_text_answers'),
+  path('sub',views.sub,name='sub'),
+  path('radio',views.radio,name='radio'),
 ]

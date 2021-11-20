@@ -5,7 +5,10 @@ from main_app.forms import AnswerTextForm
 from django.shortcuts import redirect
 from main_app.models import Question_text
 from main_app.models import Answer_text
-
+from main_app.models import Question_radio
+from main_app.models import Answer_radio
+from main_app.forms import QuestionRadioForm
+from main_app.forms import AnswerRadioForm
 
 # Create your views here.
 def index(request):
@@ -16,9 +19,21 @@ def index(request):
     return redirect(to = 'index')
   params={
     'form':QuestionTextForm(),
-    'data':Question_text.objects.all()
+    'data':Question_text.objects.all(),
   }
   return render(request,'index.html',params)
+
+def radio(request):
+  if(request.method == 'POST'):
+    content = request.POST['content']
+    obj = Question_radio(content=content) 
+    obj.save()
+    return redirect(to = 'radio')
+  params={
+    'form':QuestionRadioForm(),
+    'data':Question_radio.objects.all(),
+  }
+  return render(request,'radio.html',params)
 
 def answer(request):
   if(request.method == 'POST'):
@@ -32,6 +47,19 @@ def answer(request):
     'dataQ':Question_text.objects.all()
   }
   return render(request,'answer.html',params)
+
+def sub(request):
+  if(request.method == 'POST'):
+    obj=Answer_radio()
+    item = AnswerRadioForm(request.POST,instance=obj) 
+    item.save()
+    return redirect(to = 'sub')
+  params={
+    'form':AnswerRadioForm(),
+    'data':Answer_radio.objects.all(),
+    'dataQ':Question_radio.objects.all()
+  }
+  return render(request,'sub.html',params)
   
 
 
