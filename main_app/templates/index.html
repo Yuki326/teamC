@@ -8,8 +8,9 @@
   </head>
   <body>
     <div class="list">
+      <h2>質問リスト</h2>
       {% for item in data %}
-      <p>{{item.content}}</p>
+      <p>{{item.id}}:{{item.content}}</p>
       {% empty %}
       <h1>現在保存されている質問はありません</h1>
       {% endfor %}

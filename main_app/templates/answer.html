@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-
-<link href="../static/css/index.css" rel="stylesheet"/>
+<script>
+  
+</script>
+<link href="../static/css/answer.css" rel="stylesheet"/>
 
 <table>
   <form action="{% url 'answer' %}" method ="post">
@@ -12,12 +14,21 @@
 </table>
 
 <div class="list">
-  
+  <h3>回答リスト</h3>
   {% for item in data %}
   <p>{{item.content}}</p>
   {% empty %}
   <h1>現在保存されている回答はありません</h1>
   {% endfor %}
 </div>
-
+<div class="listQ">
+  <h2>質問リスト</h2>
+  {% for item in dataQ %}
+  <p>{{item.id}}:{{item.content}}</p>
+  <input type="text" id="answer{{item.id}}">
+  {% empty %}
+  <h1>現在保存されている質問はありません</h1>
+  {% endfor %}
+  <a href="#">送信</a>
+</div>
 {% endblock %}

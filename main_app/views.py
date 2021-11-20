@@ -28,7 +28,8 @@ def answer(request):
     return redirect(to = 'answer')
   params={
     'form':AnswerTextForm(),
-    'data':Answer_text.objects.all()
+    'data':Answer_text.objects.all(),
+    'dataQ':Question_text.objects.all()
   }
   return render(request,'answer.html',params)
   
