@@ -22,7 +22,8 @@ def index(request):
 
 def answer(request):
   if(request.method == 'POST'):
-    item = AnswerTextForm() 
+    obj=Answer_text()
+    item = AnswerTextForm(request.POST,instance=obj) 
     item.save()
     return redirect(to = 'answer')
   params={

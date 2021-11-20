@@ -7,7 +7,8 @@ from django.utils import timezone
 
 class Question_text(models.Model):
   content = models.CharField(max_length=100)
-  
+  def __str__(self):
+    return self.content
  
 
 class Answer_text(models.Model):
