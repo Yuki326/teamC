@@ -33,13 +33,7 @@ def answer(request):
   }
   return render(request,'answer.html',params)
   
-def createQuestionText(request):
-  if(request.method == 'POST'):
-      item = QuestionTextForm(request.POST)
-      item.save()
-      return redirect(to = '')
 
-  return render(request,'index.html')
 
 def save_text_answers(request):
     questions = Question_text.objects.all()

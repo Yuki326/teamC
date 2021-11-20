@@ -17,4 +17,17 @@ class AnswerTextForm(forms.ModelForm):
 class QuestionTextForm(forms.Form):
     content = forms.CharField(label='質問')
 
+class AnswerRadioForm(forms.Form):
+    VALUE_CHOICES = [
+    (1,'とても悪い'),
+    (2,'悪い'),
+    (3,'普通'),
+    (4,'まあまあ'),
+    (5,'とても良い')
+    ]
+    content = forms.ChoiceField(label='radio',\
+        choices=VALUE_CHOICES,widget=forms.RadioSelect())
+        
+class QuestionRadioForm(forms.Form):
+    content = forms.CharField(label='質問')
 
