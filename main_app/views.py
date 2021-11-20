@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from main_app.forms import QuestionTextForm
@@ -22,6 +23,14 @@ def index(request):
     'data':Question_text.objects.all(),
   }
   return render(request,'index.html',params)
+
+def get_index_data(request):
+  
+  params={
+    'form':QuestionTextForm(),
+    'data':Question_text.objects.all(),
+  }
+  return JsonResponse(params)
 
 def radio(request):
   if(request.method == 'POST'):
@@ -71,8 +80,11 @@ def save_text_answers(request):
         question = Question_text.objects.get(id=i.id)
         obj=Answer_text(question_id=question,content=answer)
         obj.save()
-    # subject=Subject.objects.get(id=subject_id)
-    # #todo 開始日と締め切り日の要素を後で追加する
-    # obj = Task(subject_id=subject,name=name,author = request.user,start=start)
-    # obj.save()
+    
     return HttpResponse('Hellooooo')
+
+def delete_question_text(request,num):
+
+  obj = Question_text.objects.get(id=num)
+  obj.delete()
+  return redirect(to = 'index')
