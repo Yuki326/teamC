@@ -1,0 +1,21 @@
+
+
+<link href="../static/css/index.css" rel="stylesheet"/>
+
+<table>
+  <form action="{% url 'answer' %}" method ="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr><td></td><td><input type="submit" value="click"></td></tr>
+  </form>
+</table>
+
+<div class="list">
+  
+  {% for item in data %}
+  <p>{{item.content}}</p>
+  {% empty %}
+  <h1>現在保存されている回答はありません</h1>
+  {% endfor %}
+</div>
+

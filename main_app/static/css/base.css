@@ -1,3 +1,29 @@
-html{
-  background-color:skyblue;
+:root {
+  --accent-color: rgb(255,165,0);
+  --head-color:white;
+  --base-color:white;
+  --sub-color:white;
+  --text-color:black;
 }
+a{
+  color:var(--text-color);
+  text-decoration: none;
+}
+.header{
+  position:fixed;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items:center; 
+  background-color:var(--head-color);
+  height:8vh;
+  width:100vw;
+  top:0;
+  font-size:2rem;
+
+}
+/* .contents{
+  position:fixed;
+  top:8vh;
+  overflow-y: scroll;
+} */

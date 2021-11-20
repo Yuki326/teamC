@@ -1,8 +1,23 @@
+:root {
+  --accent-color: rgb(255,165,0);
+  --head-color:white;
+  --base-color:rgb(1,4,9);
+  --sub-color:rgb(13,17,23);
+  --text-color:black;
+}
 .test{
+  position:fixed;
+  top:8vh;
+  width:100vw;
   background-color:skyblue;
   font-weight: bold;
   color:white;
 }
-h1{
-  color:red;
+table{
+  position:fixed;
+  top:20vh;
+}
+.list{
+  position:fixed;
+  top:40vh;
 }

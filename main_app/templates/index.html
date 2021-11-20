@@ -1,10 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
 {% load static %}
-<DOCTYPE html>
+
   <head>
     <title>test</title>
     <link href="../static/css/index.css" rel="stylesheet"/>
   </head>
-  <body>  
-    <h1 class="test">test</h1>
+  <body>
+    <div class="list">
+      <h1 class="test">test</h1>
+      {% for item in data %}
+      <p>{{item.content}}</p>
+      {% empty %}
+      <h1>現在保存されている質問はありません</h1>
+      {% endfor %}
+    </div>
+    <table>
+      <form action="{% url 'index' %}" method ="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <tr><td></td><td><input type="submit" value="click"></td></tr>
+      </form>
+     
+    </table>
   </body>
 </html>
+{% endblock %}

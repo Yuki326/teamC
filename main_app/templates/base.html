@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+    <head> 
+        <title> カレンダー </title> 
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/normalize.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class = "header">
+            <a class = "title" href="{% url 'index' %}">質問作成ページ</a>
+            <a class = "title" href="{% url 'answer' %}">アンケート</a>
+        </div>
+        
+        <div class="contents">
+          {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
