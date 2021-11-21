@@ -1,0 +1,12 @@
+.result{
+  background-color: aquamarine;
+}
+.list{
+  position:fixed;
+  top:10vh;
+}
+.listRadio{
+  position:fixed;
+  top:10vh;
+  left:30vw;
+}

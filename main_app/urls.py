@@ -8,5 +8,6 @@ urlpatterns = [
   path('sub',views.sub,name='sub'),
   path('radio',views.radio,name='radio'),
   path('delete_question_text/<int:num>',views.delete_question_text,name='delete_question_text'),
+  path('result',views.result,name='result'),
 
 ]

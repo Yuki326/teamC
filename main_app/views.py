@@ -13,6 +13,8 @@ from main_app.forms import AnswerRadioForm
 
 # Create your views here.
 def index(request):
+  
+ 
   if(request.method == 'POST'):
     content = request.POST['content']
     item = Question_text(content=content) 
@@ -22,6 +24,7 @@ def index(request):
     'form':QuestionTextForm(),
     'data':Question_text.objects.all(),
   }
+  
   return render(request,'index.html',params)
 
 def get_index_data(request):
@@ -81,10 +84,17 @@ def save_text_answers(request):
         obj=Answer_text(question_id=question,content=answer)
         obj.save()
     
-    return HttpResponse('Hellooooo')
+    return JsonResponse('')
 
 def delete_question_text(request,num):
 
   obj = Question_text.objects.get(id=num)
   obj.delete()
   return redirect(to = 'index')
+
+def result(request):
+  params={
+    'data':Answer_text.objects.all(),
+    'data_radio':Answer_radio.objects.all(),
+  }
+  return render(request,'result.html',params)

@@ -34,30 +34,22 @@
   
 
 </script>
-<link href="../static/css/answer.css" rel="stylesheet"/>
+<link href="../static/css/sub.css" rel="stylesheet"/>
 
-<table>
-  <form action="{% url 'sub' %}" method ="post">
-    {% csrf_token %}
-    {{ form.as_table }}
-    <tr><td></td><td><input type="submit" value="click"></td></tr>
-  </form>
-</table>
 
-<div class="list">
-  <h3>回答リスト</h3>
-  {% for item in data %}
-  <p>{{item.content}}</p>
-  {% empty %}
-  <h1>現在保存されている回答はありません</h1>
-  {% endfor %}
-</div>
+
 <div class="listQ">
-  <h2>質問リスト</h2>
+  <h2>アンケート</h2>
   {% for item in dataQ %}
   <p>{{item.id}}:{{item.content}}</p>
-  <input type="text" id="answer{{item.id}}">
-  ここはラジオボタンに変える
+  <p>
+    <input type="radio" name="q{{item.id}}" value="1"> とても悪い
+    <input type="radio" name="q{{item.id}}" value="2"> 悪い
+    <input type="radio" name="q{{item.id}}" value="3"> 普通
+    <input type="radio" name="q{{item.id}}" value="4"> まあまあ
+    <input type="radio" name="q{{item.id}}" value="5"> とてもよい
+  </p>
+
   {% empty %}
   <h1>現在保存されている質問はありません</h1>
   {% endfor %}

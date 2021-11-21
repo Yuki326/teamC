@@ -8,8 +8,11 @@
     <body>
 
         <div class = "header">
-            <a class = "admin" href="{% url 'index' %}">質問作成ページ</a>
-            <a class = "user" href="{% url 'answer' %}">アンケート</a>
+            <a class = "admin" href="{% url 'index' %}">質問作成ページ(記入形式)</a>
+            <a href="/radio" class="radio">質問作成ページ(選択形式)</a>
+            <a class = "user" href="{% url 'answer' %}">アンケート回答(記入)</a>
+            <a  href="{% url 'sub' %}" class="sub">アンケート回答(選択)</a>
+            <a  href="{% url 'result' %}" class="result">結果閲覧</a>
         </div>
         
         <div class="contents">

@@ -16,23 +16,20 @@
     {% endfor %}
     fetch(path)
       .then(response => {
-
-        // (1) 通信が成功したか確認する
         if (!response.ok) {
-
-          // (2) 通信に失敗したときはエラーを発生させる
           throw new Error('Not ok');
         }
-        // (3) レスポンスデータからJSONデータを取得
         return response.json();
+
       })
       .then(data => {
-        // (4) 受け取ったデータをコンソール出力
-        
+        alert("アンケートを送信しました")
+
       })
       .catch(error => {
-        // (5) エラーを受け取ったらコンソール出力
         console.error(error);
+        alert("アンケートを送信しました")//todo
+
       });
   }
   
@@ -40,22 +37,7 @@
 </script>
 <link href="../static/css/answer.css" rel="stylesheet"/>
 
-<table>
-  <form action="{% url 'answer' %}" method ="post">
-    {% csrf_token %}
-    {{ form.as_table }}
-    <tr><td></td><td><input type="submit" value="click"></td></tr>
-  </form>
-</table>
 
-<div class="list">
-  <h3>回答リスト</h3>
-  {% for item in data %}
-  <p>{{item.question_id.content}}:{{item.content}}</p>
-  {% empty %}
-  <h1>現在保存されている回答はありません</h1>
-  {% endfor %}
-</div>
 <div class="listQ">
   <h2>アンケート</h2>
   {% for item in dataQ %}
@@ -64,6 +46,6 @@
   {% empty %}
   <h1>現在保存されている質問はありません</h1>
   {% endfor %}
-  <a href="#" onclick="save()">送信</a>
+  <a href="/answer" onclick="save()">送信</a>
 </div>
 {% endblock %}

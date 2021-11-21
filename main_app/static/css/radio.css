@@ -17,9 +17,6 @@ table{
   position:fixed;
   top:20vh;
 }
-.select{
-  left:30vw;
-}
 .list{
   position:fixed;
   top:40vh;
@@ -27,8 +24,12 @@ table{
 .listQ{
   position:fixed;
   top:40vh;
-  left:30vw;
+  left:50vw;
 }
-.admin{
+
+.radio{
   background-color:aquamarine;
+}
+.submit{
+  cursor:pointer;
 }

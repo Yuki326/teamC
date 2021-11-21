@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link href="{% static 'css/result.css'%}" rel="stylesheet">
+
+<div class="list">
+  <h3>記入式質問の回答リスト</h3>
+  {% for item in data %}
+  <p>{{item.question_id.content}}:{{item.content}}</p>
+  {% empty %}
+  <h1>現在保存されている回答はありません</h1>
+  {% endfor %}
+</div>
+<div class="listRadio">
+  <h3>選択式質問の回答リスト</h3>
+  {% for item in data_radio %}
+  <p>{{item.question_id.content}}:{{item.content}}</p>
+  {% empty %}
+  <h1>現在保存されている回答はありません</h1>
+  {% endfor %}
+</div>
+{% endblock %}
