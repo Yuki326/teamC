@@ -140,10 +140,7 @@ def setPlt(a,b,c,d,e):
   # 円グラフを描画
   x = np.array([a,b,c,d,e])
   label = ["too bad", "bad", "ok", "good", "too good"]
-  plt.pie(x, labels=label, counterclock=True, startangle=90)
-
-  #plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
-    
+  plt.pie(x, labels=label, counterclock=True, startangle=90)    
 
 # SVG化
 def plt2svg():
@@ -155,8 +152,16 @@ def plt2svg():
 
 # 実行するビュー関数
 def get_svg(request):
-    setPlt(1000, 200, 300, 400, 500)
-    svg = plt2svg()  #SVG化
-    plt.cla()  # グラフをリセット
-    response = HttpResponse(svg, content_type='image/svg+xml')
-    return response
+  data=[0,0,0,0,0]
+  obj=Question_radio.objects.get(id='1')
+  origin=Answer_radio.objects.filter(question_id=obj).all()
+  print(data)
+  for i in origin:
+    data[int(i.content)-1]=data[int(i.content)-1]+1
+  
+  setPlt(data[0],data[1],data[2],data[3],data[4])
+  
+  svg = plt2svg()  #SVG化
+  plt.cla()  # グラフをリセット
+  response = HttpResponse(svg, content_type='image/svg+xml')
+  return response
