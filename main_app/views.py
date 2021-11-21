@@ -119,10 +119,14 @@ def delete_question_text(request,num):
   return redirect(to = 'index')
 
 def result(request):
+  select = '1'
+  if 'select' in request.GET:
+    select = request.GET['select']
   params={
     'data':Answer_text.objects.all(),
     'data_radio':Answer_radio.objects.all(),
     'q_radio':Question_radio.objects.all(),
+    'select':select
   }
   return render(request,'result.html',params)
 

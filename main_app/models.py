@@ -27,7 +27,7 @@ VALUE_CHOICES = [
 class Question_radio(models.Model):
   content = models.CharField(max_length=100)
   def __str__(self):
-    return self.content
+    return str(self.id)
  
 
 class Answer_radio(models.Model):

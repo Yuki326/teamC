@@ -15,14 +15,13 @@
   <h3>選択式質問の回答リスト</h3>
   {% for item in data_radio %}
   <p>{{item.question_id.content}}:{{item.content}},{{item.created_at}}</p>
+  <a href="/result?select={{item.question_id}}">グラフの表示</a>
   {% empty %}
   <h1>現在保存されている回答はありません</h1>
   {% endfor %}
 </div>
 <div class="graph">
+  <img src="{% url 'plot' select %}" width=600 height=600>
   
-  {% for item in q_radio%}
-    <img src="{% url 'plot' item.id %}" width=600 height=600>
-  {% endfor %}
 </div>
 {% endblock %}
