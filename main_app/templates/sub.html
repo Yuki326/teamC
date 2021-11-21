@@ -4,12 +4,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script>
-  function save(){
-    var path ="/save_text_answers?";
+  function save_radio(){
+    var path ="/save_radio_answers?";
+    let values = '';
+    let checkValues = '';
     {% for item in dataQ %}
+    values = document.getElementsByName('q{{item.id}}');
+
+    for (let i = 0; i < values.length; i++){
+        if (values.item(i).checked){
+            checkValue = values.item(i).value;
+        }
+    }
     path = path + "answer{{item.id}}="
-    + document.getElementById("answer"+{{item.id}}).value +"&"
+    + checkValue +"&"
+    
     {% endfor %}
+    console.log(path)
     fetch(path)
       .then(response => {
 
@@ -24,7 +35,8 @@
       })
       .then(data => {
         // (4) 受け取ったデータをコンソール出力
-        
+        alert("アンケートを送信しました")
+
       })
       .catch(error => {
         // (5) エラーを受け取ったらコンソール出力
@@ -53,6 +65,6 @@
   {% empty %}
   <h1>現在保存されている質問はありません</h1>
   {% endfor %}
-  <a href="#" onclick="save()">送信</a>
+  <div onclick="save_radio()">送信</div>
 </div>
 {% endblock %}

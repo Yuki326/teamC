@@ -84,7 +84,18 @@ def save_text_answers(request):
         obj=Answer_text(question_id=question,content=answer)
         obj.save()
     
-    return JsonResponse('')
+    return JsonResponse({'test':0})
+
+def save_radio_answers(request):
+    questions = Question_radio.objects.all()
+    for i in questions:
+      if 'answer'+str(i.id) in request.GET:
+        answer = request.GET['answer'+str(i.id)]
+        question = Question_radio.objects.get(id=i.id)
+        obj=Answer_radio(question_id=question,content=answer)
+        obj.save()
+    
+    return JsonResponse({'test':0})
 
 def delete_question_text(request,num):
 

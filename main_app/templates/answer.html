@@ -28,7 +28,6 @@
       })
       .catch(error => {
         console.error(error);
-        alert("アンケートを送信しました")//todo
 
       });
   }
@@ -46,6 +45,6 @@
   {% empty %}
   <h1>現在保存されている質問はありません</h1>
   {% endfor %}
-  <a href="/answer" onclick="save()">送信</a>
+  <div onclick="save()">送信</div>
 </div>
 {% endblock %}
