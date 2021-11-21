@@ -4,9 +4,24 @@
 .list{
   position:fixed;
   top:10vh;
+  left:0;
+  width:30vw;
+  height:90vh;
+  overflow-y: scroll;
 }
 .listRadio{
   position:fixed;
   top:10vh;
   left:30vw;
+  width:30vw;
+  height:90vh;
+  overflow-y: scroll;
+}
+.graph{
+  position:fixed;
+  top:10vh;
+  left:60vw;
+  width:40vw;
+  height:90vh;
+  overflow-y: scroll;
 }

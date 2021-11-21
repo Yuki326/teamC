@@ -122,6 +122,7 @@ def result(request):
   params={
     'data':Answer_text.objects.all(),
     'data_radio':Answer_radio.objects.all(),
+    'q_radio':Question_radio.objects.all(),
   }
   return render(request,'result.html',params)
 
@@ -151,9 +152,9 @@ def plt2svg():
     return s
 
 # 実行するビュー関数
-def get_svg(request):
+def get_svg(request,num):
   data=[0,0,0,0,0]
-  obj=Question_radio.objects.get(id='1')
+  obj=Question_radio.objects.get(id=num)
   origin=Answer_radio.objects.filter(question_id=obj).all()
   print(data)
   for i in origin:
