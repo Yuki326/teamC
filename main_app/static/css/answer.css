@@ -23,8 +23,12 @@ table{
 }
 .listQ{
   position:fixed;
-  top:40vh;
-  left:50vw;
+  top:10vh;
+  left:0;
+  width:100vw;
+  height:90vh;
+  align-items: center;
+  overflow-y: scroll;
 }
 
 .user{
