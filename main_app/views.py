@@ -133,13 +133,17 @@ import io
 from django.http import HttpResponse
 
 #グラフ作成
-def setPlt():
-    x = ["07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"]
-    y = [3, 5, 0, 5, 6, 10, 2]
-    plt.bar(x, y, color='#00d5ff')
-    plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
-    plt.xlabel("Date")
-    plt.ylabel("km")
+def setPlt(a,b,c,d,e):
+  import numpy as np
+  import matplotlib.pyplot as plt
+  
+  # 円グラフを描画
+  x = np.array([a,b,c,d,e])
+  label = ["too bad", "bad", "ok", "good", "too good"]
+  plt.pie(x, labels=label, counterclock=True, startangle=90)
+
+  #plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
+    
 
 # SVG化
 def plt2svg():
@@ -151,7 +155,7 @@ def plt2svg():
 
 # 実行するビュー関数
 def get_svg(request):
-    setPlt()  
+    setPlt(1000, 200, 300, 400, 500)
     svg = plt2svg()  #SVG化
     plt.cla()  # グラフをリセット
     response = HttpResponse(svg, content_type='image/svg+xml')
