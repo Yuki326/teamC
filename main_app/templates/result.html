@@ -14,7 +14,7 @@
 <div class="listRadio">
   <h3>選択式質問の回答リスト</h3>
   {% for item in data_radio %}
-  <p>{{item.question_id.content}}:{{item.content}}</p>
+  <p>{{item.question_id.content}}:{{item.content}},{{item.created_at}}</p>
   {% empty %}
   <h1>現在保存されている回答はありません</h1>
   {% endfor %}

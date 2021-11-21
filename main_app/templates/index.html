@@ -46,6 +46,7 @@
         <tr>
           <td>{{item.id}}</td>
           <td>{{item.content}}</td>
+          <td><a href="{% url 'edit_text_question' item.id %}">編集</a></td>
           <td><a href="{% url 'delete_question_text' item.id %}">削除</a></td>
         </tr>
       {% empty %}

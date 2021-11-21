@@ -14,8 +14,10 @@ class AnswerTextForm(forms.ModelForm):
         model = Answer_text
         fields = ['question_id','content']
         
-class QuestionTextForm(forms.Form):
-    content = forms.CharField(label='質問')
+class QuestionTextForm(forms.ModelForm):
+    class Meta:
+        model = Answer_text
+        fields = ['content']
 
 
 class AnswerRadioForm(forms.Form):

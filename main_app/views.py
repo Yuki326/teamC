@@ -27,6 +27,21 @@ def index(request):
   
   return render(request,'index.html',params)
 
+def edit_text_question(request,num):
+  obj=Question_text.objects.get(id=num)
+  
+  if(request.method == 'POST'):
+    item = QuestionTextForm(request.POST,instance=obj),
+    item.save()
+    return redirect(to = 'index')
+  params={
+    'form':QuestionTextForm(instance=obj),
+    'data':Question_text.objects.all(),
+    'id':num
+  }
+  
+  return render(request,'edit_text_question.html',params)
+
 def get_index_data(request):
   
   params={

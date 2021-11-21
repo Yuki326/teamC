@@ -14,6 +14,7 @@ class Question_text(models.Model):
 class Answer_text(models.Model):
   question_id = models.ForeignKey(Question_text,on_delete=models.CASCADE)#質問テーブルと紐づけ
   content = models.CharField(max_length=100)
+  created_at = models.DateTimeField(auto_now_add=True, help_text='作成日')
 
 
 VALUE_CHOICES = [
@@ -32,4 +33,5 @@ class Question_radio(models.Model):
 class Answer_radio(models.Model):
   question_id = models.ForeignKey(Question_radio,on_delete=models.CASCADE)#質問テーブルと紐づけ
   content = models.TextField(verbose_name="種類名",choices=VALUE_CHOICES,blank=True)
+  created_at = models.DateTimeField(auto_now_add=True, help_text='作成日')
 
